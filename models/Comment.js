@@ -13,28 +13,25 @@ Comment.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    date_created: {
-      type: DataTypes.DATE,
-      allowNull: false,
-    },
-    comment_content: {
+    filename: {
       type: DataTypes.STRING,
       allowNull: false,
     },
     blogpost_id: {
       type: DataTypes.INTEGER,
       references: {
-        model: 'blogposts',
+        model: 'blogpost',
         key: 'id',
       },
     },
   },
   {
     sequelize,
+    timestamps: true,
     freezeTableName: true,
     underscored: true,
-    modelName: 'painting',
+    modelName: 'comment',
   }
 );
 
-module.exports = Painting;
+module.exports = Comment;

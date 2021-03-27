@@ -1,23 +1,23 @@
 //import all needed files
 const User = require('./User');
-const Blogposts = require('./Blogposts');
+const Blogposts = require('./Blogpost');
 const Comment = require('./Comment');
 
-User.hasMany(Blogposts, {
+User.hasMany(Blogpost, {
     foreignKey: 'blogpost_id',
 });
 
-Blogposts.belongsTo(User, {
+Blogpost.belongsTo(User, {
     foreignKey: 'blogpost_id',
 })
 
-Blogposts.hasMany(Comment, {
+Blogpost.hasMany(Comment, {
   foreignKey: 'comment_id',
   onDelete: 'CASCADE',
 });
 
-Comment.belongsTo(Blogposts, {
+Comment.belongsTo(Blogpost, {
   foreignKey: 'comment_id',
 });
 
-module.exports = { User, Blogposts, Comment };
+module.exports = { User, Blogpost, Comment };
