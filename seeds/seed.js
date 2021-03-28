@@ -3,6 +3,7 @@ const { User, Blogpost } = require('../models');
 
 const userData = require('./userData.json')
 const bpData = require('./blogposts.json');
+const commentData = require('./comments.json');
 
 const seedDatabase = async () => {
   await sequelize.sync({ force: true });
@@ -19,6 +20,12 @@ const seedDatabase = async () => {
     });
   }
 
+  for (const comment of commentData) {
+    await Comment.create({
+      ...comment,
+      blogpost_id: blogpost[Math.floor(Math.random() * blogpost.length)].id,
+    })
+  }
   process.exit(0);
 };
 
