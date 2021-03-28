@@ -13,9 +13,14 @@ Comment.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    filename: {
+    content: {
       type: DataTypes.STRING,
       allowNull: false,
+    },
+    date_created: {
+      type: DataTypes.DATE,
+      allowNull: false,
+      defaultValue: DataTypes.NOW,
     },
     blogpost_id: {
       type: DataTypes.INTEGER,
@@ -24,10 +29,17 @@ Comment.init(
         key: 'id',
       },
     },
+    user_id: {
+     type: DataTypes.INTEGER,
+     references: {
+       model: 'user',
+       key: 'id',
+     }
+    },
   },
   {
     sequelize,
-    timestamps: true,
+    timestamps: false,
     freezeTableName: true,
     underscored: true,
     modelName: 'comment',

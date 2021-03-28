@@ -1,6 +1,6 @@
 //import all needed files
 const User = require('./User');
-const Blogposts = require('./Blogpost');
+const Blogpost = require('./Blogpost');
 const Comment = require('./Comment');
 
 User.hasMany(Blogpost, {

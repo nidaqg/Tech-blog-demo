@@ -17,9 +17,14 @@ Blogpost.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    filename: {
+    content: {
       type: DataTypes.STRING,
       allowNull: false,
+    },
+    date_created: {
+      type: DataTypes.DATE,
+      allowNull: false,
+      defaultValue: DataTypes.NOW,
     },
     author_id: {
         type: DataTypes.INTEGER,
@@ -32,7 +37,7 @@ Blogpost.init(
   },
   {
     sequelize,
-    timestamps: true,
+    timestamps: false,
     freezeTableName: true,
     underscored: true,
     modelName: 'blogpost',
