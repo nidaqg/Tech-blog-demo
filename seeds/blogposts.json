@@ -1,0 +1,15 @@
+[
+    {
+      "post_title": "JQuery rocks",
+      "content": "Javascript is ok and all, but jQuery is so much easier to work with."
+    },
+    {
+      "post_title": "Bootstrap or no Bootstrap?",
+      "content": "Bootstrap offers an easy to use framework for sure, but there's something very satisfying about writing your own css without using an external framework."
+    },
+    {
+      "post_title": "MySQL",
+      "content": "MySQL is awesome!"
+    }
+  ]
+  
