@@ -1,11 +1,12 @@
-<section class="col-sm-6 justify-content-center text-center">
+<section class="col-sm-8 justify-content-center text-center mb-4">
 {{#each blogposts as |blogpost|}}
 <section class="row">
-  <section class="card m-2 localCard"
+  <section class="card m-2 localCard">
     <section class="card-body">
-      <h5 class="text-center">{{blogpost.post_title}}</h5>
-      <h4 class="text-center">{{blogpost.date_created}}</h4>
-        <p>{{blogpost.content}}</p>
+      <h5 class="text-center card-title">{{blogpost.post_title}}</h5>
+      <h6 class= "text-center card-subtitle mb-2 text-muted">Written by: {{blogpost.user.username}}</h6>
+      <h6 class="text-center card-subtitle mb-2 text-muted">{{format_date blogpost.date_created}}</h6>
+        <p class = "card-text">{{blogpost.content}}</p>
     </section>
   </section>
 </section>
