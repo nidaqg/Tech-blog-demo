@@ -7,6 +7,9 @@
       <h6 class= "text-center card-subtitle mb-2 text-muted">Written by: {{blogpost.user.username}}</h6>
       <h6 class="text-center card-subtitle mb-2 text-muted">{{format_date blogpost.date_created}}</h6>
         <p class = "card-text">{{blogpost.content}}</p>
+        <h5>
+        <a href="/blogpost/{{blogpost.id}}" class="text-muted">Read More -></a>
+        </h5>
     </section>
   </section>
 </section>
