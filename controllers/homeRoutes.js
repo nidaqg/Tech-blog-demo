@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Blogpost, User } = require('../models');
+const { Blogpost, User, Comment } = require('../models');
 const withAuth = require('../utils/auth');
 
 // Route to homepage
@@ -20,6 +20,7 @@ router.get('/', async (req, res) => {
     res.render('homepage', {
       blogposts,
       // Pass the logged in flag to the template
+      logged_in: req.session.logged_in,
     });
   } catch (err) {
     res.status(500).json(err);
@@ -39,22 +40,33 @@ router.get('/login', (req, res) => {
   
 
 //route to dashboard
-router.get('/dashboard', async (req,res) => {
+router.get('/dashboard', withAuth, async (req,res) => {
   try {
-    const userData = await User.findByPk(req.session.user_id, {
-      attributes: {exclude: ['password']},
+    const userData = await Blogpost.findAll({
+      where: {
+        author_id: req.session.user_id
+      },
       include: [
         {
-          model: Blogpost,
+          model: Comment,
+          include: {
+            model: User,
+            attributes: ['username']
+          }
         },
+        {
+          model: User,
+          attributes: ['username']
+        }
       ],
     });
 
     //serialize data so the template can read it
-    const user = userData.get({ plain: true });
+    const posts = userData.map(post => post.get({ plain: true }));
 
     res.render('dashboard', {
-      ...user,
+      posts,
+      logged_in:true,
     });
   } catch (err) {
     res.status(500).json(err);
@@ -64,13 +76,20 @@ router.get('/dashboard', async (req,res) => {
 //route to get blogpost by id
 router.get('/blogpost/:id', async (req, res) => {
   // If the user is not logged in, redirect the user to the login page
-  //if (!req.session.logged_in) {
-   // res.redirect('/login');
- // } else {
-    // If the user is logged in, allow them to view the gallery
+  if (!req.session.logged_in) {
+    res.redirect('/login');
+  } else {
+    // If the user is logged in, allow them to view their dashboard
     try {
       const blogpostPK = await Blogpost.findByPk(req.params.id, {
         include: [
+          {
+            model: Comment,
+            include: {
+                model: User,
+                attributes: ['username']
+            }
+        },
           {
             model: User,
             attributes: ['username'],
@@ -78,12 +97,15 @@ router.get('/blogpost/:id', async (req, res) => {
         ],
       });
       const blogpost = blogpostPK.get({ plain: true });
-      res.render('blogpost', { blogpost });
+      res.render('blogpost', { 
+        blogpost,
+        logged_in: req.session.logged_in,
+      });
     } catch (err) {
       console.log(err);
       res.status(500).json(err);
     }
-  //}
+  }
 });
 
 //export router    

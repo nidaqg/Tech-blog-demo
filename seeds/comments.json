@@ -1,11 +1,17 @@
 [
     {
-      "content": "Well written!"
+      "content": "Well written!",
+      "blogpost_id": 1,
+       "user_id": 1
     },
     {
-      "content": "Very informative"
+      "content": "Very informative",
+      "blogpost_id": 2,
+      "user_id": 2
     },
     {
-      "content": "Where can I get more info on this topic?"
+      "content": "Where can I get more info on this topic?",
+      "blogpost_id": 3,
+      "user_id": 3
     }
   ]

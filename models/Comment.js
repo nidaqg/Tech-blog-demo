@@ -24,6 +24,7 @@ Comment.init(
     },
     blogpost_id: {
       type: DataTypes.INTEGER,
+      allowNull: false,
       references: {
         model: 'blogpost',
         key: 'id',
@@ -31,6 +32,7 @@ Comment.init(
     },
     user_id: {
      type: DataTypes.INTEGER,
+     allowNull: false,
      references: {
        model: 'user',
        key: 'id',
