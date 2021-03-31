@@ -109,11 +109,12 @@ router.get('/blogpost/:id', async (req, res) => {
   }
 });
 
+//route to edit/delete page
 router.get('/edit/:id', withAuth, async (req,res)=> {
   if (!req.session.logged_in) {
     res.redirect('/login');
   } else {
-    // If the user is logged in, allow them to view their dashboard
+    // If the user is logged in, allow them to view edit page
     try {
       const blogpostPK = await Blogpost.findByPk(req.params.id, {
         include: [
@@ -135,6 +136,21 @@ router.get('/edit/:id', withAuth, async (req,res)=> {
         blogpost,
         logged_in: true,
       });
+    } catch (err) {
+      console.log(err);
+      res.status(500).json(err);
+    }
+  }
+})
+
+//route to create new post
+router.get('/newpost', withAuth, async (req,res) => {
+  if (!req.session.logged_in) {
+    res.redirect('/login');
+  } else {
+    // If the user is logged in, allow them to view their dashboard
+    try {
+     res.render ('newpost', {logged_in: true})
     } catch (err) {
       console.log(err);
       res.status(500).json(err);
