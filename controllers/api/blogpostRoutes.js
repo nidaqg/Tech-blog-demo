@@ -7,8 +7,9 @@ const withAuth = require('../../utils/auth');
 router.post('/', withAuth, async (req, res) => {
   try {
     const newBlogpost = await Blogpost.create({
-      ...req.body,
-      author_id: req.session.user_id,
+      post_title: req.body.title,
+      content: req.body.content,
+      author_id: req.session.user_id
     });
 
     res.status(200).json(newBlogpost);
@@ -18,12 +19,11 @@ router.post('/', withAuth, async (req, res) => {
 });
 
 //delete a blogpost
-router.delete('/:id', withAuth, async (req, res) => {
+router.delete('/edit/:id', withAuth, async (req, res) => {
   try {
     const bpData = await Blogpost.destroy({
       where: {
         id: req.params.id,
-        author_id: req.session.user_id,
       },
     });
 
@@ -39,15 +39,15 @@ router.delete('/:id', withAuth, async (req, res) => {
 });
 
 //update blog post
-router.put('/:id', async (req, res) => {
+router.put('/edit/:id', async (req, res) => {
     try {
       const updatedBP = await Blogpost.update({
-        ...req.body,
+        post_title: req.body.title,
+        content: req.body.content
       },
       {
        where: {
          id:req.params.id,
-         author_id: req.session.user_id,
         }
       });
   

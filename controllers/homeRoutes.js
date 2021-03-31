@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const { Blogpost, User, Comment } = require('../models');
 const withAuth = require('../utils/auth');
+const { route } = require('./api/commentRoutes');
 
 // Route to homepage
 router.get('/', async (req, res) => {
@@ -107,6 +108,39 @@ router.get('/blogpost/:id', async (req, res) => {
     }
   }
 });
+
+router.get('/edit/:id', withAuth, async (req,res)=> {
+  if (!req.session.logged_in) {
+    res.redirect('/login');
+  } else {
+    // If the user is logged in, allow them to view their dashboard
+    try {
+      const blogpostPK = await Blogpost.findByPk(req.params.id, {
+        include: [
+          {
+            model: Comment,
+            include: {
+                model: User,
+                attributes: ['username']
+            }
+        },
+          {
+            model: User,
+            attributes: ['username'],
+          },
+        ],
+      });
+      const blogpost = blogpostPK.get({ plain: true });
+      res.render('edit-post', { 
+        blogpost,
+        logged_in: true,
+      });
+    } catch (err) {
+      console.log(err);
+      res.status(500).json(err);
+    }
+  }
+})
 
 //export router    
 module.exports = router;
