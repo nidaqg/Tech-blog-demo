@@ -1,4 +1,4 @@
-# Tech Blog Sample
+# Tech Blog Demo
 
 ![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.0-4baaaa.svg)
 ![badge](https://img.shields.io/badge/license-MIT-orange)
@@ -23,14 +23,30 @@ THis project aimed at creating a CMS-style blog site where developers can publis
 * [License](#license)
 * [Questions](#questions)
 
-## Acceptance Criteria
+
+## Installation
+
+This app makes use of the following technologies:
+1 express-handlebars
+2 MySQL2
+3 Sequelize
+4 dotenv
+5 bcrypt
+6 espress-session
+7 connect-session-sequelize
+
+The app can be viewed at:
+
+Alternatively, the repo can be downloaded and run locally. All the npm packages are provided in the package.json file and running npm i from the command line will install them all. After that just run npm start to start app.
+
+## Usage
 
 GIVEN a CMS-style blog site
 WHEN I visit the site for the first time
 THEN I am presented with the homepage, which includes existing blog posts if any have been posted; navigation links for the homepage and the dashboard; and the option to log in
 WHEN I click on the homepage option
 THEN I am taken to the homepage
-WHEN I click on any other links in the navigation
+WHEN I click on any other links in the navigation 
 THEN I am prompted to either sign up or sign in
 WHEN I choose to sign up
 THEN I am prompted to create a username and password
@@ -59,16 +75,6 @@ THEN I am signed out of the site
 WHEN I am idle on the page for more than a set time
 THEN I am automatically signed out of the site 
 
-
-## Getting Started
-
-Your application’s folder structure must follow the Model-View-Controller paradigm. You’ll need to use the [express-handlebars](https://www.npmjs.com/package/express-handlebars) package to implement Handlebars.js for your Views, use the [MySQL2](https://www.npmjs.com/package/mysql2) and [Sequelize](https://www.npmjs.com/package/sequelize) packages to connect to a MySQL database for your Models, and create an Express.js API for your Controllers.
-
-You’ll also need the [dotenv package](https://www.npmjs.com/package/dotenv) to use environment variables, the [bcrypt package](https://www.npmjs.com/package/bcrypt) to hash passwords, and the [express-session](https://www.npmjs.com/package/express-session) and [connect-session-sequelize](https://www.npmjs.com/package/connect-session-sequelize) packages to add authentication.
-
-## Installation
-
-## Usage
 
 ## Contributing
  ![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.0-4baaaa.svg)
@@ -101,6 +107,8 @@ SOFTWARE.
 
 ## Questions
 
-The repo for this project can be found here:
+The repo for this project can be found here: https://github.com/nidaqg/Tech-blog-demo
+
+Heroku link for ddeployed project can be found at: 
 
 For any questions or to report issues, email me at: nidaqg@gmail.com
