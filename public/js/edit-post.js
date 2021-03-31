@@ -36,13 +36,13 @@ deletePost.addEventListener('click', async function (event){
         const response = await fetch(`/api/blogpost/edit/${id}`, {
           method: 'DELETE',
           body: JSON.stringify({id:id}),
-          headers: {'Content-Type': 'apllication/json'}
+          headers: {'Content-Type': 'application/json'}
         });
     
         if (response.ok) {
           document.location.replace('/dashboard');
         } else {
-          alert('Failed to delete project');
+          alert('Failed to delete post');
         }
       }
 )
