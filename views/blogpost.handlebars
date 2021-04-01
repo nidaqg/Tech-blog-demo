@@ -22,8 +22,10 @@
 </form>
 
 <section class="row">
-{{#each blogpost.comment as |comment|}}
+{{#each blogpost.comments as |comment|}}
+
 {{> blog-comments}}
+
 {{/each}}
 </section>
 </section>

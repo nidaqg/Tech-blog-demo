@@ -98,6 +98,8 @@ router.get('/blogpost/:id', async (req, res) => {
         ],
       });
       const blogpost = blogpostPK.get({ plain: true });
+      console.log(blogpost);
+
       res.render('blogpost', { 
         blogpost,
         logged_in: req.session.logged_in,
