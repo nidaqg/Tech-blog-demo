@@ -2,13 +2,15 @@
 {{#each posts as |blogpost|}}
 <section class="row">
   <section class="card m-2 localCard">
-    <section class="card-body">
+    <section class="card-body mb-3">
       <h5 class="text-center card-title">{{blogpost.post_title}}</h5>
       <h6 class= "text-center card-subtitle mb-2 text-muted">Written by: {{user.username}}</h6>
       <h6 class="text-center card-subtitle mb-2 text-muted">{{format_date blogpost.date_created}}</h6>
         <p class = "card-text">{{blogpost.content}}</p>
     </section>
-    <a href="/edit/{{blogpost.id}}" class="text-muted">Edit or Delete post -></a>
+    <section class="mb-3">
+    <a href="/edit/{{blogpost.id}}" class="btn btn-dark localBtn">Edit or Delete post</a>
+    </section>
   </section>
 </section>
 {{/each}}
