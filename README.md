@@ -35,7 +35,7 @@ This app makes use of the following technologies:
 6 espress-session
 7 connect-session-sequelize
 
-The app can be viewed at:
+[Click here to view the deployed app](https://lychee-pie-95871.herokuapp.com/)
 
 Alternatively, the repo can be downloaded and run locally. All the npm packages are provided in the package.json file and running npm i from the command line will install them all. After that just run npm start to start app.
 
@@ -79,6 +79,6 @@ SOFTWARE.
 
 The repo for this project can be found here: https://github.com/nidaqg/Tech-blog-demo
 
-Heroku link for ddeployed project can be found at: 
+Heroku link for ddeployed project can be found at: https://lychee-pie-95871.herokuapp.com/
 
 For any questions or to report issues, email me at: nidaqg@gmail.com
